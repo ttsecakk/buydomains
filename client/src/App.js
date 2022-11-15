@@ -7,11 +7,11 @@ function App() {
   const params = new URLSearchParams();
   console.log(params.toString());
 
-  useEffect(() => {
-    namecheapApi.get(`?${params}`).then((response) => {
-      console.log(response);
-    });
-  }, [params]);
+  // useEffect(() => {
+  //   namecheapApi.get(`?${params}`).then((response) => {
+  //     console.log(response);
+  //   });
+  // }, [params]);
 
   return (
     <div className="App">

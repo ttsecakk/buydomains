@@ -21,10 +21,26 @@ const NameCheapForm = (props) => {
     const domainsArray = domainsListValue
       .split("\n")
       .filter((string) => string.trim() !== "");
+    let valuesObj = {
+      ApiUser: accountLoginValue,
+      ApiKey: apiKeyValue,
+      UserName: accountLoginValue,
+      Command: "namecheap.domains.dns.setCustom",
+      ClientIp: "146.70.83.67",
+      NameServers: `${ns1Value},${ns2Value}`,
+    };
     for (const el of domainsArray) {
+      const domainSplit = el.split(".");
+      const domainName = domainSplit[0];
+      const domainZone = domainSplit[1];
+      valuesObj = {
+        ...valuesObj,
+        SLD: domainName,
+        TLD: domainZone,
+      };
+      const params = new URLSearchParams(valuesObj).toString();
+      changeNsRequest(params);
     }
-
-    changeNsRequest();
   };
 
   return (

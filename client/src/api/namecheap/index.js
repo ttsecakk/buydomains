@@ -1,6 +1,5 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const namecheapApi = axios.create({
-    baseURL: process.env.API_HOST,
-    timeout: 1000,
-})
+  baseURL: "http://localhost:5000",
+});
